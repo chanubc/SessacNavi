@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SessacNavi</string>
+
+    <!-- Menu strings -->
+    <string name="home">홈</string>
+    <string name="first">첫번째 화면</string>
+    <string name="second">두번째 화면</string>
+    <string name="third">세번째 화면</string>
+    <string name="detail">상세 화면</string>
+    <string name="deeplink">Deep Link</string>
+    <!--    deep link-->
+    <string name="deep_link_uri">sesack://navi/{id}</string>
 </resources>
