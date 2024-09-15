@@ -29,22 +29,26 @@ class MainActivity : AppCompatActivity() {
         setupNavigationMenu()
     }
 
+    // NavController 초기화
     private fun initNavHost() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fcv_main) as NavHostFragment
         navController = navHostFragment.navController
     }
 
+    // Navigation Drawer 설정
     private fun setupNavigationMenu() {
         binding.navView.setupWithNavController(navController)
     }
 
+    // toolbar 액션바 설정
     private fun setupActionBar() {
         setSupportActionBar(binding.toolbar)
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
+    // toolbar 메뉴 설정
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         if (!binding.drawerLayout.isDrawerOpen(binding.navView)) {
             menuInflater.inflate(R.menu.overflow_menu, menu)
@@ -53,9 +57,11 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    // toolbar 메뉴 아이템 클릭 이벤트 처리
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         item.onNavDestinationSelected(findNavController(R.id.fcv_main)) ||
             super.onOptionsItemSelected(item)
 
+    // 뒤로가기 버튼 클릭 이벤트 처리
     override fun onSupportNavigateUp(): Boolean = navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 }
