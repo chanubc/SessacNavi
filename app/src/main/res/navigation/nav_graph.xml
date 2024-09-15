@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.chanu.sessacnavi.fragment.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+
+        <include app:graph="@navigation/nav_nested_home" />
+
+        <action
+            android:id="@+id/action_homeFragment_to_homeDetailFragment"
+            app:destination="@id/homeDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeDetailFragment"
+        android:name="com.chanu.sessacnavi.fragment.HomeDetailFragment"
+        android:label="@string/detail"
+        tools:layout="@layout/fragment_home_detail">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="@string/deep_link_uri" />
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue="상세 화면" />
+    </fragment>
 </navigation>
